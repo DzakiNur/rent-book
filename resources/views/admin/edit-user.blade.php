@@ -44,13 +44,13 @@ div.container {
   <form action="{{route('updateUser', $user->id)}}" method="post">
     @csrf
     <label for="username">Username</label>
-    <input type="text" id="username" name="username" placeholder="{{$user->username}}">
+    <input type="text" id="username" name="username" placeholder="{{$user->username}}" autofocus required>
     <label for="email">Email</label>
-    <input type="text" id="email" name="email" placeholder="{{$user->email}}">
+    <input type="text" id="email" name="email" placeholder="{{$user->email}}" required>
     <label for="phone">Phone</label>
-    <input type="text" id="phone" name="phone" placeholder="{{$user->phone}}" maxlength="12">
+    <input type="text" id="phone" name="phone" placeholder="{{$user->phone}}" maxlength="12" required>
     <label for="address">Addrees</label>
-    <input type="text" id="address" name="address" placeholder="{{$user->address}}">
+    <input type="text" id="address" name="address" placeholder="{{$user->address}}" required>
     <input type="submit" value="Submit">
   </form>
 </div>

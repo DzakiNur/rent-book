@@ -25,8 +25,9 @@ Route::get('main', function(){
 
 Route::get('/', [BookController::class, 'index'])->name('welcome');
 //route admin
-Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-Route::get('/users', [AdminController::class, 'users'])->name('users');
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+//route users
+Route::get('/users', [AdminController::class, 'users'])->name('users')->middleware('auth');
 Route::get('/editUser/{id}', [AdminController::class, 'editUser'])->name('editUser');
 Route::post('/updateUser/{id}', [AdminController::class, 'updateUser'])->name('updateUser');
 Route::post('/deleteUser/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');

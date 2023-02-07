@@ -71,26 +71,23 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </style>
 </head>
 <body>
-  @if (session('loginerror'))
+  
+    <form action="{{route('storeLogin')}}" method="post" style="max-width:500px;margin-top: 130px;" class="container justify-content-center">
+        @csrf
+        <h2>Login Form</h2>
+      @if (session('loginerror'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             {{ session ('loginerror') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-  @endif
-    <form action="{{route('storeLogin')}}" method="post" style="max-width:500px;margin-top: 130px;" class="container justify-content-center">
-        @csrf
-        <h2>Login Form</h2>
-        <div class="input-container">
-            <i class="fa fa-user icon"></i>
-            <input class="input-field" type="text" placeholder="Username" name="username" maxlength="20">
-        </div>
+      @endif
         <div class="input-container">
             <i class="fa fa-envelope icon"></i>
-            <input class="input-field" type="text" placeholder="Email" name="email">
+            <input class="input-field" type="text" placeholder="Email" name="email" autofocus required>
         </div>
         <div class="input-container">
             <i class="fa fa-key icon"></i>
-            <input class="input-field" type="password" placeholder="Password" name="password">
+            <input class="input-field" type="password" placeholder="Password" name="password" required>
         </div>
         <p>Don't have account? <a href="{{route('register')}}" style="text-decoration:none;">Register</a></p>
         <button type="submit" class="button">Login</button>
