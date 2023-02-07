@@ -28,17 +28,17 @@ Route::get('/', [BookController::class, 'index'])->name('welcome');
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('auth');
 //route users
 Route::get('/users', [AdminController::class, 'users'])->name('users')->middleware('auth');
-Route::get('/editUser/{id}', [AdminController::class, 'editUser'])->name('editUser');
+Route::get('/editUser/{id}', [AdminController::class, 'editUser'])->name('editUser')->middleware('auth');
 Route::post('/updateUser/{id}', [AdminController::class, 'updateUser'])->name('updateUser');
 Route::post('/deleteUser/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
 //route boook
-Route::get('/books', [AdminController::class, 'books'])->name('books');
-Route::get('/addBook', [BookController::class, 'addBook'])->name('addBook');
+Route::get('/books', [AdminController::class, 'books'])->name('books')->middleware('auth');
+Route::get('/addBook', [BookController::class, 'addBook'])->name('addBook')->middleware('auth');
 Route::post('/createBook', [BookController::class, 'createBook'])->name('createBook');
-Route::post('/deleteBook', [BookController::class, 'deleteBook'])->name('deleteBook');
+Route::post('/deleteBook/{id}', [BookController::class, 'deleteBook'])->name('deleteBook');
 
-Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
-Route::get('/rent-logs', [AdminController::class, 'rentLogs'])->name('rentLogs');   
+Route::get('/categories', [AdminController::class, 'categories'])->name('categories')->middleware('auth');
+Route::get('/rent-logs', [AdminController::class, 'rentLogs'])->name('rentLogs')->middleware('auth');   
 //route message
 Route::post('/storeMessage', [MessageController::class, 'storeMessage'])->name('storeMessage');
 //route register

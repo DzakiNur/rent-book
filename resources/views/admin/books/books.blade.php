@@ -25,7 +25,7 @@
         <tbody>
             <tr>
                 <td>{{$i++}}</td>
-                <td><img src="{{("assets/images/cover-book/". $books->cover)}}" style="height:100px; width:90px; object-fit: cover;"></td>
+                <td><img src="{{asset("assets/images/cover-book/". $books->cover)}}" style="height:100px; width:90px; object-fit: cover;"></td>
                 <td>{{$books->tittle}}</td>
                 <td>{{$books->author}}</td>
                 <td>{{$books->publisher}}</td>

@@ -14,7 +14,7 @@ class AdminController extends Controller
     }
     public function books(){
         $book = Book::get();
-        return view('admin.books', compact('book'));
+        return view('admin.books.books', compact('book'));
     }
     public function categories(){
         return view('admin.categories');

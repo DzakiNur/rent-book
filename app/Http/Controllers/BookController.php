@@ -12,7 +12,7 @@ class BookController extends Controller
     }
 
     public function addBook(){
-        return view('admin.create-book');
+        return view('admin.books.create-book');
     }
 
     public function createBook(Request $request){
@@ -28,8 +28,27 @@ class BookController extends Controller
 
         return redirect('books');
     }
+
+    public function editBook($id){
+        $book = Book::where('id', $id)->first();
+        return view('admin.books.edit-book', compact('book'));
+    }
+
+    public function updateBook(Request $request, $id){
+        $request->validate([
+            'tittle' => 'required',
+            'author' => 'required',
+            'publisher' => 'required',
+            'release_date' => 'required',
+            'cover' => 'required',
+        ]);
+
+        $book = Book::where('id', $id)->first();
+
+        Book::create($request->all());
+    }
     
-    public function deleteBook(Request $request, $id){
+    public function deleteBook($id){
         Book::where('id', $id)->delete();
         return redirect(route('books'));
     }
