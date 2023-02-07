@@ -31,7 +31,12 @@ Route::get('/users', [AdminController::class, 'users'])->name('users')->middlewa
 Route::get('/editUser/{id}', [AdminController::class, 'editUser'])->name('editUser');
 Route::post('/updateUser/{id}', [AdminController::class, 'updateUser'])->name('updateUser');
 Route::post('/deleteUser/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
+//route boook
 Route::get('/books', [AdminController::class, 'books'])->name('books');
+Route::get('/addBook', [BookController::class, 'addBook'])->name('addBook');
+Route::post('/createBook', [BookController::class, 'createBook'])->name('createBook');
+Route::post('/deleteBook', [BookController::class, 'deleteBook'])->name('deleteBook');
+
 Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
 Route::get('/rent-logs', [AdminController::class, 'rentLogs'])->name('rentLogs');   
 //route message

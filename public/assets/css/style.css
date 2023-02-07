@@ -23,6 +23,7 @@
 
 .sidebar a:hover{
     background-color: #000;
+    color: red;
 }
 
 .sidebar a.active{

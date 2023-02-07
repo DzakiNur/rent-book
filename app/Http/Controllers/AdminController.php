@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Book;
 
 class AdminController extends Controller
 {
@@ -12,7 +13,8 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('data'));
     }
     public function books(){
-        return view('admin.books');
+        $book = Book::get();
+        return view('admin.books', compact('book'));
     }
     public function categories(){
         return view('admin.categories');

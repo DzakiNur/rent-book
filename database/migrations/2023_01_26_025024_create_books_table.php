@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('book_code')->unique();
             $table->string('tittle');
+            $table->string('author');
+            $table->string('publisher');
+            $table->string('release_date');
             $table->string('cover')->nullable();
             $table->string('status')->default('in stock');
             $table->timestamps();
