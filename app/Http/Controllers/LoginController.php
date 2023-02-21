@@ -19,16 +19,19 @@ class LoginController extends Controller
 
         if(Auth::attempt($login)){
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            if(Auth::user() && Auth::user()->isAdmin == true){
+                return redirect('dashboard');
+            }
+            return redirect()->intended('/');
         }
 
         return back()->with('loginerror', 'Login gagal, silahkan coba lagi');
     }
 
-    public function logout(Request $request) {
+    public function logout() {
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        return redirect('');
+        return redirect('/');
     }
 }

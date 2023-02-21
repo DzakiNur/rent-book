@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('roles_id');
-            $table->foreign('roles_id')->references('id')->on('roles');
+            $table->boolean('isAdmin');
+            // $table->unsignedBigInteger('roles_id');
+            // $table->foreign('roles_id')->references('id')->on('roles');
         });
     }
 
@@ -27,9 +28,9 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            Schema::disableForeignKeyConstraints();
-            $table->dropForeign('user_role_id_foreign');
-            $table->dropColumn('role_id');
+            // Schema::disableForeignKeyConstraints();
+            // $table->dropForeign('user_role_id_foreign');
+            // $table->dropColumn('role_id');
         });
     }
 };

@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,20 +26,26 @@ Route::get('main', function(){
 
 Route::get('/', [BookController::class, 'index'])->name('welcome');
 //route admin
-Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware(['admin', 'auth']);
+Route::get('/categories', [AdminController::class, 'categories'])->name('categories')->middleware(['admin', 'auth']);
+Route::get('/rent-logs', [AdminController::class, 'rentLogs'])->name('rentLogs')->middleware(['admin', 'auth']); 
+
+//route user
+Route::get('/home', [UserController::class, 'home'])->name('home')->middleware('auth');
+
 //route users
-Route::get('/users', [AdminController::class, 'users'])->name('users')->middleware('auth');
-Route::get('/editUser/{id}', [AdminController::class, 'editUser'])->name('editUser')->middleware('auth');
+Route::get('/users', [AdminController::class, 'users'])->name('users')->middleware('auth')->middleware('admin');
+Route::get('/editUser/{id}', [AdminController::class, 'editUser'])->name('editUser')->middleware('admin')->middleware('auth');
 Route::post('/updateUser/{id}', [AdminController::class, 'updateUser'])->name('updateUser');
 Route::post('/deleteUser/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
-//route boook
-Route::get('/books', [AdminController::class, 'books'])->name('books')->middleware('auth');
-Route::get('/addBook', [BookController::class, 'addBook'])->name('addBook')->middleware('auth');
+
+//route book
+Route::get('/books', [AdminController::class, 'books'])->name('books')->middleware('admin')->middleware('auth');
+Route::get('/addBook', [BookController::class, 'addBook'])->name('addBook')->middleware('admin')->middleware('auth');
 Route::post('/createBook', [BookController::class, 'createBook'])->name('createBook');
 Route::post('/deleteBook/{id}', [BookController::class, 'deleteBook'])->name('deleteBook');
 
-Route::get('/categories', [AdminController::class, 'categories'])->name('categories')->middleware('auth');
-Route::get('/rent-logs', [AdminController::class, 'rentLogs'])->name('rentLogs')->middleware('auth');   
+  
 //route message
 Route::post('/storeMessage', [MessageController::class, 'storeMessage'])->name('storeMessage');
 //route register
@@ -48,4 +55,4 @@ Route::post('/storeRegister', [RegisterController::class, 'register'])->name('st
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/storeLogin', [LoginController::class, 'login'])->name('storeLogin');
 //route logout
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

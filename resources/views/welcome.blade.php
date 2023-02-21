@@ -35,7 +35,14 @@
                 <a class="nav-link active" aria-current="page" href="#contact">Contact</a>
               </li>
               <li class="nav-item">
+                @auth
+                <form action="{{route('logout')}}" method="post">
+                  @csrf
+                  <button type="submit" class="nav-link active btn btn-outline-danger">Logout</button>
+                </form>
+                @else
                 <a class="nav-link active btn btn-outline-success" href="{{route('login')}}">Login</a>
+                @endauth
               </li>
             </ul>
           </div>
