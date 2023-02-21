@@ -9,8 +9,9 @@ use App\Models\Book;
 class AdminController extends Controller
 {
     public function dashboard(){
-        $data = User::get();
-        return view('admin.dashboard', compact('data'));
+        $book = Book::get();
+        $user = User::get();
+        return view('admin.dashboard', compact('book', 'user'));
     }
     public function books(){
         $book = Book::get();

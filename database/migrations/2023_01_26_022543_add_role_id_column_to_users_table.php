@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('isAdmin');
+            $table->boolean('isAdmin')->nullable();
             // $table->unsignedBigInteger('roles_id');
             // $table->foreign('roles_id')->references('id')->on('roles');
         });

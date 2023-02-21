@@ -33,7 +33,7 @@
                 <td>
                     <form action="{{route('deleteBook', $books->id)}}" method="post">
                         @csrf
-                        <a href="" class="btn btn-primary">Edit</a>
+                        <a href="{{route('editBook', $books->id)}}" class="btn btn-primary">Edit</a>
                         <button class="btn btn-danger">Delete</button>
                     </form>
                 </td>

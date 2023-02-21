@@ -35,7 +35,7 @@ class BookController extends Controller
     }
 
     public function updateBook(Request $request, $id){
-        $request->validate([
+        $book = $request->validate([
             'tittle' => 'required',
             'author' => 'required',
             'publisher' => 'required',
@@ -45,7 +45,9 @@ class BookController extends Controller
 
         $book = Book::where('id', $id)->first();
 
-        Book::create($request->all());
+        $book->update($request->all());
+
+        return redirect('books');
     }
     
     public function deleteBook($id){

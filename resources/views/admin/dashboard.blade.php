@@ -16,7 +16,7 @@
                         Books
                     </div>
                     <div class="card-count">
-                        5
+                        {{$book->count()}}
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                         Users
                     </div>
                     <div class="card-count">
-                        5
+                        {{$user->count()}}
                     </div>
                 </div>
             </div>

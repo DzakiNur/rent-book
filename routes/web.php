@@ -34,15 +34,17 @@ Route::get('/rent-logs', [AdminController::class, 'rentLogs'])->name('rentLogs')
 Route::get('/home', [UserController::class, 'home'])->name('home')->middleware('user');
 
 //route users
-Route::get('/users', [AdminController::class, 'users'])->name('users')->middleware('auth')->middleware('admin');
-Route::get('/editUser/{id}', [AdminController::class, 'editUser'])->name('editUser')->middleware('admin')->middleware('auth');
+Route::get('/users', [AdminController::class, 'users'])->name('users')->middleware(['admin', 'auth']);
+Route::get('/editUser/{id}', [AdminController::class, 'editUser'])->name('editUser')->middleware(['admin', 'auth']);
 Route::post('/updateUser/{id}', [AdminController::class, 'updateUser'])->name('updateUser');
 Route::post('/deleteUser/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
 
 //route book
-Route::get('/books', [AdminController::class, 'books'])->name('books')->middleware('admin')->middleware('auth');
-Route::get('/addBook', [BookController::class, 'addBook'])->name('addBook')->middleware('admin')->middleware('auth');
-Route::post('/createBook', [BookController::class, 'createBook'])->name('createBook');
+Route::get('/books', [AdminController::class, 'books'])->name('books')->middleware(['admin', 'auth']);
+Route::get('/addBook', [BookController::class, 'addBook'])->name('addBook')->middleware(['admin', 'auth']);
+Route::post('/createBook/{id}', [BookController::class, 'createBook'])->name('createBook');
+Route::get('/editBook/{id}', [BookController::class, 'editBook'])->name('editBook')->middleware(['admin', 'auth']);;
+Route::post('/updateBook/{id}', [BookController::class, 'updateBook'])->name('updateBook');
 Route::post('/deleteBook/{id}', [BookController::class, 'deleteBook'])->name('deleteBook');
 
   

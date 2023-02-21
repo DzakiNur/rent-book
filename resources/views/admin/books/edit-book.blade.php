@@ -41,18 +41,18 @@ div.container {
 </style>
 
 <div class="container">
-  <form action="{{route('createBook')}}" method="post">
+  <form action="{{route('updateBook', $book->id)}}" method="post">
     @csrf
     <label for="name">Name</label>
-    <input type="text" id="name" name="tittle" autofocus required>
+    <input type="text" id="name" name="tittle" value="{{$book->tittle}}" autofocus required>
     <label for="author">Author</label>
-    <input type="text" id="author" name="author" required>
+    <input type="text" id="author" name="author" value="{{$book->author}}" required>
     <label for="publisher">Publisher</label>
-    <input type="text" id="publisher" name="publisher" required>
+    <input type="text" id="publisher" name="publisher" value="{{$book->publisher}}" required>
     <label for="release_date">Release Date</label>
-    <input type="text" id="release_date" name="release_date" required>
+    <input type="text" id="release_date" name="release_date" value="{{$book->release_date}}" required>
     <label for="cover">Choose file for cover book:</label><br>
-    <input type="file" id="cover" name="cover" required>
+    <input type="file" id="cover" name="cover" value="{{$book->cover}}" required>
     <input type="submit" value="Submit">
   </form>
 </div>
