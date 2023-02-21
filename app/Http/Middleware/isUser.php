@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class isUser
@@ -16,10 +17,9 @@ class isUser
      */
     public function handle(Request $request, Closure $next)
     {
-        if(! $request->expectsJson()){
-            return route('home');
+        if(Auth::guest()){
+            return redirect()->route('welcome');    
         }
-
         return $next($request);
     }
 }

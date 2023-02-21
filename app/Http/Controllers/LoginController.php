@@ -22,7 +22,7 @@ class LoginController extends Controller
             if(Auth::user() && Auth::user()->isAdmin == true){
                 return redirect('dashboard');
             }
-            return redirect()->intended('/');
+            return redirect()->intended('/home');
         }
 
         return back()->with('loginerror', 'Login gagal, silahkan coba lagi');

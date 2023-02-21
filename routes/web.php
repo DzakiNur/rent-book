@@ -31,7 +31,7 @@ Route::get('/categories', [AdminController::class, 'categories'])->name('categor
 Route::get('/rent-logs', [AdminController::class, 'rentLogs'])->name('rentLogs')->middleware(['admin', 'auth']); 
 
 //route user
-Route::get('/home', [UserController::class, 'home'])->name('home')->middleware('auth');
+Route::get('/home', [UserController::class, 'home'])->name('home')->middleware('user');
 
 //route users
 Route::get('/users', [AdminController::class, 'users'])->name('users')->middleware('auth')->middleware('admin');
