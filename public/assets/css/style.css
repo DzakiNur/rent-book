@@ -31,6 +31,29 @@
     border-right: solid 4px red;
 }
 
+.sidebar button{
+    background-color: #434242;
+    color: #FFF;
+    font-size: 17px;
+    border: none;
+    display: block;
+    padding: 10px 124px 10px 25px;
+}
+
+.sidebar button i {
+    margin-right: 8px;
+}
+
+.sidebar button:hover{
+    background-color: #000;
+    color: red;
+}
+
+.sidebar button.active{
+    background-color: #000;
+    border-right: solid 4px red;
+}
+
 .content{
     padding: 10px;
     background-color:#E5E0FF;

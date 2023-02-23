@@ -11,7 +11,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 .container{
     text-align: center;
-    margin-left: 390px;
+    margin-left: 430px;
 }
 
 .input-container {
@@ -76,25 +76,25 @@ body {font-family: Arial, Helvetica, sans-serif;}
         <h2>Register Form</h2>
         <div class="input-container">
             <i class="fa fa-user icon"></i>
-            <input class="input-field" type="text" placeholder="Username" name="username" maxlength="50">
+            <input class="input-field" type="text" placeholder="Username" name="username" maxlength="50" autofocus required>
         </div>
         <div class="input-container">
             <i class="fa fa-envelope icon"></i>
-            <input class="input-field" type="text" placeholder="Email" name="email">
+            <input class="input-field" type="text" placeholder="Email" name="email" required>
         </div>
         <div class="input-container">
             <i class="fa fa-key icon"></i>
-            <input class="input-field" type="password" placeholder="Password" name="password">
+            <input class="input-field" type="password" placeholder="Password" name="password" required>
         </div>
         <div class="input-container">
             <i class="fa fa-phone icon"></i>
-            <input class="input-field" type="text" placeholder="Phone" name="phone" minlength="11" maxlength="12">
+            <input class="input-field" type="text" placeholder="Phone" name="phone" minlength="11" maxlength="12" required>
         </div>
         <div class="input-container">
             <i class="fa fa-home icon"></i>
-            <input class="input-field" type="text" placeholder="Address" name="address">
+            <input class="input-field" type="text" placeholder="Address" name="address" required>
         </div>
-        <p>Already have account? <a href="{{route('login')}}" style="text-decoration: none">Login</a></p>
+        <p>Already have an account? <a href="{{route('login')}}" style="text-decoration: none">Login</a></p>
         <button type="submit" class="button">Register</button>
         <a href="{{route('welcome')}}" class="btn mt-2">Cancel</a>
     </form>

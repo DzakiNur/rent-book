@@ -31,7 +31,7 @@
                     <a href="{{route('books')}}" @if(request()->route()->uri == 'books')class="active" @endif><i class="bi bi-book"></i>Books</a>
                     <a href="{{route('categories')}}" @if(request()->route()->uri == 'categories')class="active" @endif><i class="bi bi-tags"></i>Categories</a>
                     <a href="{{route('rentLogs')}}" @if(request()->route()->uri == 'rent-logs')class="active" @endif><i class="bi bi-list-task"></i>Rent Logs</a>
-                    <form action="{{route('logout   ')}}" method="post">@csrf<button ><i class="bi bi-box-arrow-left"></i>Logout</button></form>
+                    <form action="{{route('logout')}}" method="post">@csrf<button  @if(request()->route()->uri == 'logout')class="active" @endif><i class="bi bi-box-arrow-left"></i>Logout</button></form>
                 </div>
                 <div class="content col-lg-10">
                     @yield('content')

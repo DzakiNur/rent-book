@@ -42,7 +42,7 @@ Route::post('/deleteUser/{id}', [AdminController::class, 'deleteUser'])->name('d
 //route book
 Route::get('/books', [AdminController::class, 'books'])->name('books')->middleware(['admin', 'auth']);
 Route::get('/addBook', [BookController::class, 'addBook'])->name('addBook')->middleware(['admin', 'auth']);
-Route::post('/createBook/{id}', [BookController::class, 'createBook'])->name('createBook');
+Route::post('/createBook', [BookController::class, 'createBook'])->name('createBook');
 Route::get('/editBook/{id}', [BookController::class, 'editBook'])->name('editBook')->middleware(['admin', 'auth']);;
 Route::post('/updateBook/{id}', [BookController::class, 'updateBook'])->name('updateBook');
 Route::post('/deleteBook/{id}', [BookController::class, 'deleteBook'])->name('deleteBook');

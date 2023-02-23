@@ -11,7 +11,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 .container {
     text-align: center;
-    margin-left: 390px;
+    margin-left: 430px;
 }
 
 .input-container {

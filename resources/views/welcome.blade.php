@@ -7,6 +7,7 @@
     <title>Rent Books</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/landing.css">
 </head>
 <body>
     {{-- navbar --}}
@@ -19,31 +20,38 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Category
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Novel</a></li>
-                  <li><a class="dropdown-item" href="#">Comic</a></li>
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                </ul>
+                <a class="nav-link active" aria-current="page" href="/home"><i class="bi bi-house-door"></i> Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#contact">Contact</a>
+                <a class="nav-link active" aria-current="page" href="#contact"><i class="bi bi-person-lines-fill"></i> Contact</a>
               </li>
-              <li class="nav-item">
-                @auth
-                <form action="{{route('logout')}}" method="post">
-                  @csrf
-                  <button type="submit" class="nav-link active btn btn-outline-danger">Logout</button>
-                </form>
-                @else
-                <a class="nav-link active btn btn-outline-success" href="{{route('login')}}">Login</a>
-                @endauth
-              </li>
+              @auth
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-light" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Hi, {{Auth::user()->username}}
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/home"><i class="bi bi-house-door"></i> Home</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                      <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        <button class="dropdown-item"><i class="bi bi-box-arrow-left"></i> Logout</button>
+                      </form>
+                    </li>
+                  </ul>
+                </li>
+              @else
+                <li class="nav-item">
+                  <a class="nav-link active" href="{{route('login')}}"><i class="bi bi-box-arrow-right"></i> Login</a>
+                </li>
+              @endauth
+              <!-- <li class="nav-iten">
+                <label for="">
+                  <input type="checkbox">
+                  <span class="check"></span>
+                </label>
+              </li> -->
             </ul>
           </div>
         </div>
