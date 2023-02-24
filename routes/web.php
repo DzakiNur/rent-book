@@ -27,9 +27,12 @@ Route::get('main', function(){
 Route::get('/', [BookController::class, 'index'])->name('welcome');
 //route admin
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')->middleware(['admin', 'auth']);
-Route::get('/categories', [AdminController::class, 'categories'])->name('categories')->middleware(['admin', 'auth']);
-Route::get('/rent-logs', [AdminController::class, 'rentLogs'])->name('rentLogs')->middleware(['admin', 'auth']); 
+Route::get('/rent-logs', [AdminController::class, 'rentLogs'])->name('rentLogs')->middleware(['admin', 'auth']);
 
+//route category
+Route::get('/categories', [AdminController::class, 'categories'])->name('categories')->middleware(['admin', 'auth']);
+Route::post('/deleteCategory/{id}', [AdminController::class, 'deleteCategory'])->name('deleteCategory');
+ 
 //route user
 Route::get('/home', [UserController::class, 'home'])->name('home')->middleware('user');
 

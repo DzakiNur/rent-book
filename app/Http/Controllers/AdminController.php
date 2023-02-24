@@ -5,21 +5,31 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Book;
+use App\Models\Category;
 
 class AdminController extends Controller
 {
     public function dashboard(){
         $book = Book::get();
         $user = User::get();
-        return view('admin.dashboard', compact('book', 'user'));
+        $category = Category::get();
+        return view('admin.dashboard', compact('book', 'user', 'category'));
     }
     public function books(){
         $book = Book::get();
         return view('admin.books.books', compact('book'));
     }
     public function categories(){
-        return view('admin.categories');
+        $category = Category::get();
+        return view('admin.categories', compact('category'));
     }
+
+    public function deleteCategory(Request  $request, $id)
+    {
+        Category::where('id', $id)->delete();
+        return redirect(route('categories'));
+    }
+
     public function rentLogs(){
         return view('admin.rent-logs');
     }

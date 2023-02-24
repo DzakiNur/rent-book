@@ -24,7 +24,7 @@ class BookController extends Controller
             'cover' => 'required',
         ]);
 
-        Book::create($book);
+        Book::create($book);    
 
         return redirect('books');
     }
