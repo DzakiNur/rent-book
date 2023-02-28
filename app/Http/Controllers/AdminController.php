@@ -21,7 +21,7 @@ class AdminController extends Controller
     }
     public function categories(){
         $category = Category::get();
-        return view('admin.categories', compact('category'));
+        return view('admin.categories.categories', compact('category'));
     }
 
     public function deleteCategory(Request  $request, $id)

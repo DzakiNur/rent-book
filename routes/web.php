@@ -31,6 +31,7 @@ Route::get('/rent-logs', [AdminController::class, 'rentLogs'])->name('rentLogs')
 
 //route category
 Route::get('/categories', [AdminController::class, 'categories'])->name('categories')->middleware(['admin', 'auth']);
+Route::get('/addCategory', [CategoryController::class, 'addCategory'])->name('addCategory')->middleware(['admin', 'auth']);
 Route::post('/deleteCategory/{id}', [AdminController::class, 'deleteCategory'])->name('deleteCategory');
  
 //route user

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('author');
             $table->string('publisher');
             $table->string('release_date');
+            $table->string('name_genre');
             $table->string('cover')->nullable();
             $table->string('status')->default('in stock');
             $table->timestamps();
